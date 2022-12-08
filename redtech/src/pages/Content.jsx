@@ -6,8 +6,7 @@ export default function Content() {
     ]
 
     return (
-        <>
-          <div className="min-h-full">
+        <div className="min-h-full">
             <HeaderWithCompanyLogo title={"Content"} />
             <main>
                 <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -22,7 +21,6 @@ export default function Content() {
                     </div>
                 </div>
             </main>
-          </div>
-        </>
-      )
+        </div>
+    )
 }
