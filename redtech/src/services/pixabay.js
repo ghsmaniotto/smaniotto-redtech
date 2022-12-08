@@ -1327,7 +1327,7 @@ export class Pixabay {
         
         return new ContentItem(
             this.getFileNameFromUrl(smallVideo["url"]),
-            "video",
+            ContentItem.VIDEO_TYPE,
             this.getResolutionFromVideo(smallVideo),
             smallVideo["url"],
             this.getCreatedAtFromUrl(video["userImageURL"])
@@ -1337,7 +1337,7 @@ export class Pixabay {
     buildContentItemFromImage(image) {
         return new ContentItem(
             this.getFileNameFromUrl(image["previewURL"]),
-            "image",
+            ContentItem.IMAGE_TYPE,
             this.getResolutionFromImage(image),
             image["previewURL"],
             this.getCreatedAtFromUrl(image["userImageURL"])
@@ -1377,12 +1377,19 @@ export class Pixabay {
 }
 
 class ContentItem {
+    IMAGE_TYPE = "image";
+    VIDEO_TYPE = "video" 
+
     constructor(fileName, type, resolution, previewURL, createdAt) {
         this.fileName = fileName;
         this.type = type;
         this.resolution = resolution;
         this.createdAt = createdAt;
         this.previewURL = previewURL;
+    }
+
+    isImage() {
+        return this.type === this.IMAGE_TYPE;
     }
 
     fileName() {
