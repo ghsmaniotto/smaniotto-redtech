@@ -13,11 +13,17 @@ function isUserCredentialsValid(userEmail, userPassword) {
 }
 
 function isValidEmail(email) {
-    return true;
+    const regexToValidateEmail = 
+        /^(([\w-_+.])|("[\w-_+.]+"))+@(([\w-]+\.)+[\w-]{2,4}|\[(?:[0-9]{1,3}\.){3}[0-9]{1,3}\])$/;
+    
+    return RegExp(regexToValidateEmail).test(email);
 }
 
 function isValidPassword(password) {
-    return true;
+    const regexToValidatePassword = 
+        /^(?=.+[a-z])(?=.+[A-Z])(?=.+\d)(?=.+[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    return RegExp(regexToValidatePassword).test(password);
 }
   
 export { authProvider };
