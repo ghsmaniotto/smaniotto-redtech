@@ -8,16 +8,18 @@ export default function ContentByTopic() {
 
     const pixabayService = new Pixabay();
     
-    let contentItems = pixabayService.getImages(topic)
+    let contentItems = pixabayService.getImages(topic);
 
     return (
         <div className="min-h-full">
             <HeaderWithCompanyLogo title={topic} />
             <div className="flow-root">
                 <ul className="divide-y divide-gray-200">
-                    {contentItems.map((content, index) => (
-                        <ContentListItem content={content} index={index} />
-                    ))}
+                    {
+                        contentItems.map((content, index) => (
+                            <ContentListItem key={`content-item-${index}`} content={content} />
+                        ))
+                    }
                 </ul>
             </div>
         </div>
