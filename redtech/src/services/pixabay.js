@@ -1376,7 +1376,7 @@ export class Pixabay {
     }
 }
 
-class ContentItem {
+export class ContentItem {
     IMAGE_TYPE = "image";
     VIDEO_TYPE = "video" 
 
