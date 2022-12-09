@@ -12,18 +12,21 @@ function isUserCredentialsValid(userEmail, userPassword) {
     return isValidEmail(userEmail) && isValidPassword(userPassword);
 }
 
-function isValidEmail(email) {
+function isValidEmail(email="") {
     const regexToValidateEmail = 
-        /^(([\w-_+.])|("[\w-_+.]+"))+@(([\w-]+\.)+[\w-]{2,4}|\[(?:[0-9]{1,3}\.){3}[0-9]{1,3}\])$/;
+        /((\w+\.\w+)+|[\w-_+]|"[\w-_+]+")+@(?![-])((([\w-]+\.)+[\w-]{2,4})|\[(?:[0-9]{1,3}\.){3}[0-9]{1,3}\])/;
+    const matchedEmail = email.match(regexToValidateEmail);
     
-    return RegExp(regexToValidateEmail).test(email);
+    return matchedEmail !== null && matchedEmail[0] === email;
 }
 
-function isValidPassword(password) {
+function isValidPassword(password="") {
     const regexToValidatePassword = 
-        /^(?=.+[a-z])(?=.+[A-Z])(?=.+\d)(?=.+[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}/;
 
-    return RegExp(regexToValidatePassword).test(password);
+    const matchedPassword = password.match(regexToValidatePassword);
+
+    return matchedPassword !== null && matchedPassword[0] === password;
 }
   
 export { authProvider };
