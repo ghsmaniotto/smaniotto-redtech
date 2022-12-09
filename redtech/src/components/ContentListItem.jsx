@@ -5,8 +5,7 @@ export default function ContentListItem({content}) {
         <li className="flex p-2 m-2">
             <div className="h-24 w-24 rounded-md border border-gray-200 p-1">
                 { 
-                    content.isImage ? 
-                        <PhotoIcon className="h-full w-full"/> : <VideoCameraIcon className="h-full w-full"/> 
+                    content.isImage() ? <PhotoIcon className="h-full w-full"/> : <VideoCameraIcon className="h-full w-full"/> 
                 }
             </div>
 

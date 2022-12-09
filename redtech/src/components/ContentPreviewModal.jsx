@@ -51,7 +51,7 @@ export default function ContentPreviewModal({content}) {
                     Content Preview
                   </Dialog.Title>
                   {
-                    content.isImage ?
+                    content.isImage() ?
                       <img className="h-full w-full" src={content.previewURL} alt={content.fileName} /> :
                       <video className="h-full w-full" controls>
                         <source src={content.previewURL} />
