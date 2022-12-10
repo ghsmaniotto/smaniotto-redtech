@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/content" element={<Content />} />
-        <Route path="/content/:topic" element={<ContentByTopic />} />
+        <Route path="/content/:contentType/:topic" element={<ContentByTopic />} />
       </Routes>
     </BrowserRouter>
   );

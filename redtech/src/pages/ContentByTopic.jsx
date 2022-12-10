@@ -6,6 +6,7 @@ import ContentList from '../components/ContentList';
 
 export default function ContentByTopic() {
     const { topic } = useParams();
+    const { contentType } = useParams();
 
     let [contentItems, setContentItems] = useState([]);
 
@@ -13,9 +14,13 @@ export default function ContentByTopic() {
         const pixabayService = new Pixabay();
         
         ( async () => {
-            setContentItems(await pixabayService.getVideos(topic));
+            if(contentType === 'videos') {
+                setContentItems(await pixabayService.getVideos(topic));
+            } else if(contentType === 'images') {
+                setContentItems(await pixabayService.getImages(topic));
+            }
         })();
-    }, [topic])
+    }, [topic, contentType])
     
     return (
         <div className="min-h-full">
