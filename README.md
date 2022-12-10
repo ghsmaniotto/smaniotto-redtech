@@ -60,6 +60,9 @@ like useEfect, useState, setState, etc.
 - I splited the components, pages, services in different folders detailed in the 
 next section. With that I could organize my code in a better way.
 
+- During the development I kept a list of TODOs, in order to be able to implement 
+the requirements. Once I was implementing it, I checked out all the items in the TODO list.
+
 # Project organization
 
 - Routes: as the number of routes is not big, I prefer to keep the logic of the route
