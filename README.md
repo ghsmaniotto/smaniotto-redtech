@@ -35,10 +35,15 @@ will be rendered showing a list of 50 contents related to the topic.
 - Improve the error handling in the login page
     - Show error dialog or message instead of raising an alert on the page
     - Show the user how the email and password should look like
+- There is no automated tests in the project
+    - Add unit and integration testes
+- Improve the layout of the application
+    - It would be nice to have help from someone specialized to improve the UI/UX of
+    the app
 
 # Technical Decisions
 
-- I will use [GitHub](https://github.com/) as the Version Control System.
+- I used [GitHub](https://github.com/) as the Version Control System.
 
 - I chose to work with [*ReactJS*](https://reactjs.org/) instead of *EmberJS* because I've worked with 
 ReactJS before. As they are not my day-to-day tool, I prefer to use something 
@@ -59,6 +64,7 @@ like useEfect, useState, setState, etc.
 
 - I splited the components, pages, services in different folders detailed in the 
 next section. With that I could organize my code in a better way.
+    - With that, I could separate the responsibilities of the component in the project.
 
 - During the development I kept a list of TODOs, in order to be able to implement 
 the requirements. Once I was implementing it, I checked out all the items in the TODO list.
@@ -66,6 +72,16 @@ the requirements. Once I was implementing it, I checked out all the items in the
 - I used only one branch on GitHub to develop the project. I prefer doing it like this
 because it is a small project with only one person working on it. But using multiple branches
 would not be a problem.
+
+- I use only JavaScript in the project, but for a bigger project I would use
+TypeScript to be able to use the benefits of the typing
+
+- I decided to do not add automated testes in the project due the time of it, but it
+will be one of the first things to do. We could use the TestingLibrary package for
+example.
+
+- The layout of the application should also be improved. Would be nice to have a designer,
+for example, helping me with mockups to the user's experience and user's interface.
 
 # Project organization
 
