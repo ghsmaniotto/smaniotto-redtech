@@ -63,6 +63,10 @@ next section. With that I could organize my code in a better way.
 - During the development I kept a list of TODOs, in order to be able to implement 
 the requirements. Once I was implementing it, I checked out all the items in the TODO list.
 
+- I used only one branch on GitHub to develop the project. I prefer doing it like this
+because it is a small project with only one person working on it. But using multiple branches
+would not be a problem.
+
 # Project organization
 
 - Routes: as the number of routes is not big, I prefer to keep the logic of the route
