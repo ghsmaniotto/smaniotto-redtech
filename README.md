@@ -3,7 +3,7 @@ This project is part of a job interview process for RedBull.
 
 ## Link to the application
 
-To access the application, click [here]()
+To access the application, click [here](https://jazzy-paprenjak-ba4e85.netlify.app/).
 
 # Project features
 
@@ -38,13 +38,13 @@ will be rendered showing a list of 50 contents related to the topic.
 
 # Technical Decisions
 
-- I will use GitHub as the Version Control System.
+- I will use [GitHub](https://github.com/) as the Version Control System.
 
-- I chose to work with *ReactJS* instead of *EmberJS* because I've worked with 
+- I chose to work with [*ReactJS*](https://reactjs.org/) instead of *EmberJS* because I've worked with 
 ReactJS before. As they are not my day-to-day tool, I prefer to use something 
 that I have, at least, some familiarity with.
 
-- I also decided for TailwindCSS to build a more admirable application for you.
+- I also decided for [TailwindCSS](https://tailwindui.com/) to build a more admirable application for you.
 I was used to using Boostrap, but for this study case, I chose TailwindCSS.
     - TailwindCSS recommends headlessui and heroicons packages for ui and icons
     components
@@ -53,6 +53,12 @@ I was used to using Boostrap, but for this study case, I chose TailwindCSS.
 Netlify to deploy the frontend application in my first job in Brazil, and it was
 helpful and easy. I connected the GitHub repository there, and for every push
 command to the *main* branch, it will trigger the deployment process.
+
+- To control the state of the application/contents/pages I used the React hooks 
+like useEfect, useState, setState, etc.
+
+- I splited the components, pages, services in different folders detailed in the 
+next section. With that I could organize my code in a better way.
 
 # Project organization
 
