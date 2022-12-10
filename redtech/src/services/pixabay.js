@@ -1,3 +1,5 @@
+import { ContentItem } from "../models/ContentItem";
+
 export class Pixabay {
     SERVICE_URL = "https://pixabay.com/api/";
     SERVICE_KEY = `?key=&`;
@@ -35,7 +37,7 @@ export class Pixabay {
         
         return new ContentItem(
             this.getFileNameFromUrl(smallVideo["url"]),
-            ContentItem.VIDEO_TYPE,
+            "video",
             this.getResolutionFromVideo(smallVideo),
             smallVideo["url"],
             this.getCreatedAtFromUrl(video["userImageURL"])
@@ -45,7 +47,7 @@ export class Pixabay {
     buildContentItemFromImage(image) {
         return new ContentItem(
             this.getFileNameFromUrl(image["previewURL"]),
-            ContentItem.IMAGE_TYPE,
+            "image",
             this.getResolutionFromImage(image),
             image["previewURL"],
             this.getCreatedAtFromUrl(image["userImageURL"])
@@ -81,38 +83,5 @@ export class Pixabay {
         if (fileName === null) return "File name not provided";
 
         return fileName.length === 0 ? fileName.toString() : fileName[0].toString();
-    }
-}
-
-export class ContentItem {
-    IMAGE_TYPE = "image";
-    VIDEO_TYPE = "video" 
-
-    constructor(fileName, type, resolution, previewURL, createdAt) {
-        this.fileName = fileName;
-        this.type = type;
-        this.resolution = resolution;
-        this.createdAt = createdAt;
-        this.previewURL = previewURL;
-    }
-
-    isImage() {
-        return this.type === this.IMAGE_TYPE;
-    }
-
-    fileName() {
-        return this.fileName;
-    }
-    type() {
-        return this.type;
-    }
-    resolution() {
-        return this.resolution;
-    }
-    createdAt() {
-        return this.createdAt;
-    }
-    previewURL() {
-        return this.previewURL;
     }
 }
