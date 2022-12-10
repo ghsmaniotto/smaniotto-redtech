@@ -13,7 +13,9 @@ export class Pixabay {
                                     .then((response) => response.json())
                                     .then((data) => data["hits"]);
 
-            return images.map((image) => this.buildContentItemFromImage(image));
+            return this.sortContentByName(
+                images.map((image) => this.buildContentItemFromImage(image))
+            );
         } catch(e) {
             return Error("Not possible to fetch images");
         }
@@ -26,7 +28,9 @@ export class Pixabay {
                                     .then((response) => response.json())
                                     .then((data) => data["hits"]);
             
-            return videos.map((video) => this.buildContentItemFromVideo(video));
+            return this.sortContentByName(
+                videos.map((video) => this.buildContentItemFromVideo(video))
+            );
         } catch(e) {
             return Error("Not possible to fetch videos");
         }
@@ -34,9 +38,10 @@ export class Pixabay {
 
     buildContentItemFromVideo(video) {
         const smallVideo = video["videos"]["small"];
+        const fileName = this.getFileNameFromUrl(smallVideo["url"]);
         
         return new ContentItem(
-            this.getFileNameFromUrl(smallVideo["url"]),
+            this.formatVideoFileName(fileName),
             "video",
             this.getResolutionFromVideo(smallVideo),
             smallVideo["url"],
@@ -45,13 +50,20 @@ export class Pixabay {
     }
 
     buildContentItemFromImage(image) {
+        const fileName = this.getFileNameFromUrl(image["previewURL"]);
         return new ContentItem(
-            this.getFileNameFromUrl(image["previewURL"]),
+            this.removeIdFromImageName(fileName),
             "image",
             this.getResolutionFromImage(image),
             image["previewURL"],
             this.getCreatedAtFromUrl(image["userImageURL"])
         )
+    }
+
+    sortContentByName(array=[]) {
+        return array.sort((a, b) => {
+            return a.fileName.toLowerCase() < b.fileName.toLowerCase() ? -1 : 1;
+        });
     }
 
     getResolutionFromVideo(video) {
@@ -78,10 +90,19 @@ export class Pixabay {
     getFileNameFromUrl(url=""){
         const fileNameRegex = /[^/]+(?:.\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF|mp4|mp3|MP4|MP3))/;
 
-        const fileName = RegExp(fileNameRegex).exec(url);
+        const fileName = url.match(fileNameRegex);
 
         if (fileName === null) return "File name not provided";
 
-        return fileName.length === 0 ? fileName.toString() : fileName[0].toString();
+        return fileName[0].toString();
+    }
+
+    removeIdFromImageName(fileName=""){
+        return fileName.replace(/-\d*_\d*/, '');
+    }
+
+    formatVideoFileName(fileName=""){
+        const fileNameWithSpaces = fileName.replaceAll(/%20/g, ' ');
+        return fileNameWithSpaces.replace(/ - [\d]*/, '');
     }
 }
